@@ -62,7 +62,7 @@ FROM Employees;
 
 -- 6. Convert the hire date into a formatted string in the format 'Month, Day, Year' (e.g. 'March 15, 2020').
 -- i used datetime functions
-SELECT HireDate, DATE_FORMAT(HireDate, '%m-%d-%Y') AS FormattedHireDate FROM Employees;
+SELECT HireDate, DATE_FORMAT(HireDate, '%M-%d-%Y') AS FormattedHireDate FROM Employees;
 
 -- 7. Retrieve all employees along with their department names.
 -- i used table join
