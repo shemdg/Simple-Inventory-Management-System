@@ -42,10 +42,11 @@ SELECT * FROM Employees ORDER BY Salary DESC;
 
 -- 3. Count the number of employees in each department.
 -- i used table join and grouping data
+-- changed variables into descriptive
 SELECT d.DepartmentName, COUNT(e.EmployeeID) AS EmployeesPerDept
-FROM employees e
-INNER JOIN departments d ON e.DepartmentID = d.DepartmentID
-GROUP BY d.DepartmentName;
+FROM employees emp
+INNER JOIN departments dept ON emp.DepartmentID = dept.DepartmentID
+GROUP BY dept.DepartmentName;
 
 -- 4. Find all employees whose first names starts with 'J'.
 -- i used wildcard operation
@@ -62,13 +63,14 @@ FROM Employees;
 
 -- 6. Convert the hire date into a formatted string in the format 'Month, Day, Year' (e.g. 'March 15, 2020').
 -- i used datetime functions
-SELECT HireDate, DATE_FORMAT(HireDate, '%m-%d-%Y') AS FormattedHireDate FROM Employees;
+SELECT HireDate, DATE_FORMAT(HireDate, '%M-%d-%Y') AS FormattedHireDate FROM Employees;
 
 -- 7. Retrieve all employees along with their department names.
 -- i used table join
-SELECT e.EmployeeID, e.FirstName, e.Lastname, e.DepartmentID, d.DepartmentName
-FROM Employees e
-JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+-- used descriptive variable names
+SELECT emp.EmployeeID, emp.FirstName, emp.Lastname, emp.DepartmentID, dept.DepartmentName
+FROM Employees emp
+JOIN Departments dept ON emp.DepartmentID = dept.DepartmentID;
 
 -- 8. Retrieve the employees who earn more than the average salary.
 -- i used subquery and avg function
@@ -92,7 +94,7 @@ SELECT * FROM Employees WHERE HireDate > '2019-12-31' AND HireDate < '2021-01-01
 -- i used string functions
 SELECT LastName, FirstName, CONCAT(UPPER(FirstName), ' ', UPPER(LastName)) AS FullNameInUpperCase FROM Employees;
 
--- 12. Increase the salry of employees in the IT department by 10%, but ensure that the transaction is rolled back if something goes wrong.
+-- 12. Increase the salary of employees in the IT department by 10%, but ensure that the transaction is rolled back if something goes wrong.
 -- i used transactions
 -- i set autocommit to 0 because 0 disables autocommit where as 1 enables autocommit
 Set autocommit = 0;
